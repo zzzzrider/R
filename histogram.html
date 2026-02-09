@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.7.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>R入門 度数分布とヒストグラム</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>度数分布とヒストグラム</h2>
+<p>ここでは，R で度数分布表とヒストグラムを作成する方法について学ぶ。</p>
+<h3>ヒストグラム</h3>
+<p>階級ごとの出現回数を表にしたものが度数分布表で，それをグラフにしたものがヒストグラムである。</p>
+<p>ヒストグラムを作成するには，関数 hist を使用する。</p>
+<h5>練習</h5>
+<ol>
+  <li>小学生の体重と身長のデータが書かれた<a href="histogram.csv">CSVファイル</a>をダウンロードして，適当なフォルダに保存する。</li>
+  <li>そのファイルを変数 histdata に代入する関数を書く。（<b>演習問題</b>）</li>
+  <li>hist(histdata$体重)</li>
+</ol>
+<p>以上でヒストグラムが作成されることと，階級の幅を確認する。</p>
+<p>階級の数を指定したい場合は，</p>
+<p>hist(histdata$体重, breaks=15)<br />
+または<br />
+hist(histdata$体重, 15)<br />
+のように指定する。<br />
+（この例の場合，階級の幅が整数値を取るように切られるので，必ずしも階級数が15にはならない）</p>
+<p>ただこれでは階級の区切りが希望通りになるとは限らない。明確に区切りを指定する場合は，breaks= でベクトル形式の区切りのリストを指定する。</p>
+<p>hist(histdata$体重,breaks=c(37,40,43,46,49,52,55,58,61,64,67,70))</p>
+<p>ベクトルの定義が面倒な場合には，</p>
+<p>breaks = 34 + 3*1:12</p>
+<p>や</p>
+<p>体重bp=seq(min(histdata$体重)-3, max(histdata$体重)+3, by=3)<br />
+hist(histdata$体重, breaks=体重bp)</p>
+<p>のように数列を使ってもよい。<br />
+ここで変数名として「体重bp」を使っているが，R ではこのように変数名に2バイトコードを使用してもよい。</p>
+<h4>演習</h4>
+<p>身長のヒストグラムを作成せよ。</p>
+<h3>度数分布表</h3>
+<p>度数分布表は，残念ながら1つの関数で簡単に求められない。（パッケージを使用すれば別であるが）<br />
+そこで，cut と table を使って以下のようにすればよい</p>
+<p>histdata = read.table('e:\\work\\histogram.csv', header=TRUE, sep=&quot;,&quot;)<br />
+体重分割 = cut(histdata$体重, breaks=seq(35,73, by=3))<br />
+table(体重分割)</p>
+</body>
+</html>

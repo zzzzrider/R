@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.8.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>R入門　グラフィックス</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>グラフィックス</h2>
+<p>ここでは，R を使ったグラフの作成について学ぶ。</p>
+<h3>plot</h3>
+<p>plot は座標平面状に点を打って，それを使ってグラフを描くための関数である。plot の基本的な書式は以下の通りである。</p>
+<h5>書式</h5>
+<p>plot(横軸の変数，縦軸の変数，type=描画のタイプ, xlab=x軸ラベル, ylab=y軸ラベル, main=グラフタイトル）</p>
+<p>type に指定できる値としては，以下のようなものがある。</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td>l（エル）</td>
+      <td>点の間を直線で結ぶ</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>点のみを描く</td>
+    </tr>
+    <tr>
+      <td>h</td>
+      <td>ヒストグラムのように縦棒を描く</td>
+    </tr>
+  </tbody>
+</table>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>x &lt;- seq(-3, 3, len=100)</li>
+  <li>y &lt;- x^2</li>
+  <li>plot(x, y, type='l', main='放物線')</li>
+</ol>
+<p>さらにこれを以下の通り変更して実行せよ。</p>
+<ol>
+  <li>1行の len の値を 10 とする。</li>
+</ol>
+<ol>
+  <li>1行の len の値を 10 とする。</li>
+  <li>type を p とする。</li>
+</ol>
+<ol>
+  <li>1行の len の値を 100 に戻す</li>
+  <li>type を h とする</li>
+</ol>
+<h3>curve</h3>
+<p>plot の他に，curve を使っても図形を描ける。curve では，x の範囲や関数を別に定義しておく必要はない。また複数のグラフを同じ平面に描くこともできる。</p>
+<h5>書式</h5>
+<p>curve(描画する式，開始値，終了値，値を計算する横軸の個数，add=追加するか否か，type=描画のタイプ, xlab=x軸ラベル, ylab=y軸ラベル,
+main=グラフタイトル）</p>
+<p>add には，グラフを追加する場合，TRUE を指定する。</p>
+<p>type に指定できる値は，上の plot と同じである。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。</p>
+<p>curve(x^2, -3, 3, main='放物線')</p>
+<p>このように，curve は1行で記述できる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>curve(sin(x), -2*pi, 2*pi, ylab='y', main='y=sin(x), y=cos(x)')</li>
+  <li>curve(cos(x), -2*pi, 2*pi, add=TRUE)</li>
+</ol>
+<p>このように描くことで，ひとつのキャンパスに複数のグラフを表示できる。</p>
+<h3>グラフの保存</h3>
+<p>R で作成したグラフは，PostScript や PNG，JPEG，BMP，TIFF などの形式で保存できる。</p>
+<h4>描画グラフを直接保存</h4>
+<p>描画したグラフを右クリックすることで，グラフを保存することができる。直接保存できる形式は，Windows メタファイル（emf）とPostScriptに限られる。ただビットマップにコピーすれば，画像編集ソフトで編集することは可能である。</p>
+<h5>練習</h5>
+<ol>
+  <li>上で作成したグラフを右クリックして，ビットマップにコピーを選択する。</li>
+  <li>Windowsのアクセサリからペイントを起動する。</li>
+  <li>ペイントで貼り付けを選択する。</li>
+</ol>
+<h4>PNGで保存</h4>
+<p>保存処理は，png や postscript などの関数を用いて行う。</p>
+<p>保存の流れは以下のようになる。</p>
+<ol>
+  <li>ファイルやサイズの指定</li>
+  <li>画像描画</li>
+  <li>デバイスを閉じる</li>
+</ol>
+<p>具体的には</p>
+<ol>
+  <li>png（ファイルパス）</li>
+  <li>plot や curve でグラフを描画</li>
+  <li>dev.off()</li>
+</ol>
+<p>のように書く。さらに，png の書式は次のようになる。</p>
+<p>png(ファイルパス，幅，高さ，…）</p>
+<p>通常は，ファイルパスだけでよい。</p>
+<p>PostScript を除くその他のファイル形式についても，同様に保存できる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）<br />
+その結果，グラフが作成されていることを確認せよ。</p>
+<ol>
+  <li>png('z:\\R\\parabola.png')</li>
+  <li>curve(x^2, -3, 3, main='放物線')</li>
+  <li>dev.off()</li>
+</ol>
+<p>補足</p>
+<p>ファイル指定は，バックスラッシュ（日本語環境では￥）を2つ入れる。MS Windows ではバックスラッシュ1つしか指定しないので，間違えないように注意すること。</p>
+<h4>PostScript で保存</h4>
+<p>PostScript で保存すれば，TeX でそのまま使用することができる。基本的な処理の流れは上のPNGの場合と同じであるが，postscript
+関数の使い方が少し異なる。</p>
+<p>postscript 関数の書式は次の通りである。</p>
+<p>postscript(ファイルパス，family=フォントファミリー，paper=用紙サイズ，width=幅，height=高さ，horizontal=用紙の向き)</p>
+<p>図の中で日本語を使う場合，family に Japan1，Japan1HeiMin，Japan1Ryumin などのフォントファミリーを指定しないと正しく表示されない。</p>
+<p>width と height はインチで指定する。</p>
+<p>horizontal は，TRUE で横置き，FALSE で縦置きになる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行せよ。（行番号は入力不要）<br />
+その結果，グラフが作成されていることと，日本語の表示を確認せよ。</p>
+<ol>
+  <li>postscript('z:\\R\\parabola.eps', paper='special', width=4, height=4, horizontal=FALSE)</li>
+  <li>curve(x^2, from='-3', to='3', main='放物線')</li>
+  <li>dev.off()</li>
+</ol>
+<p>このままでは警告が出て，日本語のタイトルが正しく表示されていないことが分かる。</p>
+<p>次に postscript に</p>
+<p>family='Japan1Ryumin'　（Japan1Ryumin の他に Japan1 や Japan1HeiMin でもよい）</p>
+<p>を追加して実行せよ。図でタイトルが正しく表示されていることを確認したら，ソースを保存せよ。</p>
+<h3>3Dグラフとパッケージ</h3>
+<h4>パッケージとは</h4>
+<p>関数やデータを分野別に分類してまとめたものが<b>パッケージ</b>である。Rには非常に多くのパッケージが用意されており，ほとんどの統計処理は，標準のパッケージ，あるいは適当なパッケージをインストールすることで可能となる。統計処理以外にも，数独のパッケージなどもある。<br />
+例えば，パッケージ rgl を追加することで3次元のグラフを描くことができる。</p>
+<h4>パッケージの追加</h4>
+<p>パッケージの追加は以下の手順で行う。一度追加したパッケージは再度追加しなくても使用できる。</p>
+<ol>
+  <li>Rのメニューから　パッケージ　→　パッケージのインストール　を選ぶ。</li>
+  <li>CRAN のミラーサイトを尋ねられるので，近いサイトを選択する。（日本の大学がよい）</li>
+  <li>パッケージを選択してインストールする。保存場所はデフォルトのままでよい。</li>
+</ol>
+<p>パッケージに含まれる関数一覧は</p>
+<p>library(help=&quot;パッケージ名&quot;)</p>
+<p>で調べられる。</p>
+<h5>練習</h5>
+<p>3Dグラフを作成するためのパッケージ rgl を追加せよ。</p>
+<h4>描画</h4>
+<p>実際に3次元の図を描く例を挙げていく。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）<br />
+その結果，グラフが作成されていることを確認せよ。</p>
+<ol>
+  <li>x &lt;- seq(-3, 3, length=61)</li>
+  <li>y &lt;- x</li>
+  <li>f &lt;- function(x, y) {x^2 * y}</li>
+  <li>z &lt;- outer(x, y, f)</li>
+  <li>persp(x, y, z, theta=30, phi=20, expand=0.7, col=&quot;lightblue&quot;)</li>
+</ol>
+<dl>
+  <dt>1，2行</dt>
+  <dd>x，yともに-3から3までを60等分した端点の値を持つ数列となる。</dd>
+  <dt>3行</dt>
+  <dd>関数 x<sup>2</sup>y を定義する。</dd>
+  <dt>4行</dt>
+  <dd>(x, y) の各点（61×61個の点）での関数 f の値を z に代入。z は多次元配列となる。</dd>
+  <dt>5行</dt>
+  <dd>グラフを描画。</dd>
+</dl>
+<p>グラフが作成されることを確認したら，各数値を変更してその意味を確認せよ。<br />
+また関数の定義も変更して，どのようなグラフになるか確認せよ。</p>
+<p>この例の persp はパッケージ rgl ではなく標準の graphics ライブラリを使用するので，rgl をインストールしなくても構わない。従って上の例と同様に保存もできる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）<br />
+その結果，グラフが作成されていることを確認せよ。</p>
+<ol>
+  <li>library(rgl)</li>
+  <li>x &lt;- seq(-10, 10, length=51)</li>
+  <li>y &lt;- x</li>
+  <li>f &lt;- function(x, y) {r &lt;- sqrt(x^2 + y^2); 10 * sin(r) / r}</li>
+  <li>z &lt;- outer(x, y, f)</li>
+  <li>persp3d(x, y, z, aspect=c(1,1,0.5), col=&quot;lightblue&quot;, xlab=&quot;X&quot;,
+  ylab=&quot;Y&quot;, zlab=&quot;&quot;)</li>
+</ol>
+<dl>
+  <dt>1行</dt>
+  <dd>パッケージ rgl の読み込みを行う。R のパッケージメニューから［パッケージの読み込み］を選択してもかまわない。一度読み込んだパッケージはRを終了するまで使用出来るので，再度指定しなくてもよい。</dd>
+  <dt>2～5行</dt>
+  <dd>直前の練習と同じ。</dd>
+  <dt>6行</dt>
+  <dd>persp3d を使用して3次元グラフを作成する。この関数を使用したグラフは，マウスでドラッグすることで視点の変更ができる。またウィンドウのサイズ変更やスクロールホイールでグラフ自体のサイズ変更もできる。</dd>
+</dl>
+<p>グラフが作成されることを確認したら，aspect=c(1,1,0.5) の各数値を変更してその意味を確認せよ。<br />
+また関数の定義も変更して，どのようなグラフになるか確認せよ。</p>
+<h5>練習</h5>
+<p>persp3d でグラフを作成した場合は，以下のいずれかの処理で保存することができる。詳細は ? を使いヘルプを参照すること。</p>
+<p>snapshot3d(&quot;test.png&quot;)<br />
+rgl.postscript(&quot;test.pdf&quot;, &quot;pdf&quot;, drawText=FALSE)</p>
+</body>
+</html>

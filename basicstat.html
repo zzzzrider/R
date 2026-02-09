@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.10.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Rの基本操作</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>基本的な統計処理</h2>
+<p>ここでは，R Editor を使って，Rの基本的な統計処理について学ぶ。</p>
+<h3>基本統計量</h3>
+<p>ベクトルの成分を個々のデータとみなして，基本統計量を求めることができる。</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td>max</td>
+      <td>最大値</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>最小値</td>
+    </tr>
+    <tr>
+      <td>median</td>
+      <td>中央値</td>
+    </tr>
+    <tr>
+      <td>range</td>
+      <td>範囲（最大値と最小値）</td>
+    </tr>
+    <tr>
+      <td>sum</td>
+      <td>合計</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>平均</td>
+    </tr>
+    <tr>
+      <td>var</td>
+      <td>分散（これは不偏分散と呼ばれるもので，データ数ではなく，データ-1で割ったものになる）</td>
+    </tr>
+    <tr>
+      <td>sd</td>
+      <td>標準偏差（これは不偏標準偏差と呼ばれるもので，データ数ではなく，データ-1で割ったものになる）</td>
+    </tr>
+    <tr>
+      <td>cummax</td>
+      <td>k（k = 1, 2, 3, …）番目の項までの最大を続けて表示</td>
+    </tr>
+    <tr>
+      <td>cummin</td>
+      <td>k（k = 1, 2, 3, …）番目の項までの最小を続けて表示</td>
+    </tr>
+    <tr>
+      <td>cumsum</td>
+      <td>k（k = 1, 2, 3, …）番目の項までの和を続けて表示</td>
+    </tr>
+    <tr>
+      <td>cumprod</td>
+      <td>k（k = 1, 2, 3, …）番目の項までの積を続けて表示</td>
+    </tr>
+  </tbody>
+</table>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>x &lt;- c(-2.2, -2.8, 9.4, 1.5, 6.4, 3.2, -0.3, 8.9, -4.6, 7.3)</li>
+  <li>max(x)</li>
+  <li>min(x)</li>
+  <li>median(x)</li>
+  <li>range(x)</li>
+  <li>sum(x)</li>
+  <li>mean(x)</li>
+  <li>var(x)</li>
+  <li>sd(x)</li>
+  <li>cummax(x)</li>
+  <li>cummin(x)</li>
+  <li>cumsum(x)</li>
+  <li>cumprod(x)</li>
+</ol>
+<p>補足</p>
+<dl>
+  <dt>10行目　cummax(x)</dt>
+  <dd>1番目の項までの最大値，2番目の項までの最大値，3番目の項までの最大値，…　と順に出力される。以下の cum で始まる関数も同じ。出力されたものはベクトルとして扱われる。</dd>
+</dl>
+</body>
+</html>

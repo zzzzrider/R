@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.3.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>R入門 母平均の差の検定</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2 align="center">母平均の差の検定</h2>
+<h3>t 検定　計算式を用いた母平均の差の検定</h3>
+<p><a href="ttest2.xlsx">データのダウンロード</a></p>
+<p>この例は，ふたつの工場で製造された製品からサンプルを抜き取って，C成分の重さを計測したものである。これらの平均値が等しいかどうかを有意水準 0.05
+で検定する。この場合は，等しいか否かを判断するので，両側検定になる。</p>
+<blockquote>
+<blockquote>帰無仮説 ： 2つの工場の製品に含まれるC成分の重さの平均値は等しい。<br />
+対立仮説 ： 2つの工場の製品に含まれるC成分の重さの平均値は等しくない。</blockquote>
+</blockquote>
+<h4>１．分散の検定</h4>
+<p>ふたつの標本が等分散か否かによって t 検定の方法が異なるので，F 検定を用いてまずこれを調べる。</p>
+<p>分散が等しいふたつの母集団から取ったふたつの標本の分散 V<sub>1</sub>, V<sub>2</sub> の比 V<sub>1</sub>/V<sub>2</sub> は，<a href="fdistgraph.xlsx">F 分布</a>に従うことが知られている。サンプルデータからVAR 関数でそれぞれの分散を求め，その比を計算すると 0.854750 となる。</p>
+<p>一方 F 分布の左側限界点 F.INV(0.025,9,9)，つまりその値よりも左側にある確率が0.0.25である点は 0.248386 である。このことからF 値は信頼区間にあることが判り，等分散と仮定してよい。</p>
+<p>この他に，関数 FTEST や F.DIST を使う方法もある。２つの標本に対して FTEST を適用すると値は，0.81897 という値を返す。これは分散比が
+F 分布の両側何% の位置にあるかを示している。よってこの関数値が 0.05 より大きいことから，等分散を仮定しても良い。</p>
+<h4>２．平均の差の検定</h4>
+<p>先の結果より，等分散を仮定して検定を行う。等分散のとき</p>
+<p><img src="tdist3.gif" width="226" height="227" border="0" /></p>
+<p>は自由度 m+n-2 の t 分布に従うことが知られている。</p>
+<p>今回のデータに対してこの値を計算すると 1.87002 となる。これは t 両側境界値 T.INV.2T(0.05,18) の値 2.10092 よりも小さいので，帰無仮説は棄却されない。つまり，この2つの平均値は等しいと言ってよい。（正確には，等しくないとは言えない。）</p>
+<h5>注意</h5>
+<p> Excel2010では、関数 T.INV は片側確率の境界値を返すことに注意。両側境界値を求めたいときには、この関数T.INV.2Tを使用する。</p>
+<p>TTEST 関数で両側確率 TTEST(B4:B13,C4:C13,2,2) を計算しても良い。この値（確率） 0.07784 が 0.05
+  より大きいことから同様の結論が導かれる。</p>
+<h3>t 検定　分析ツールを用いた母平均の差の検定</h3>
+<p>上記のように数式を直接入力する他に，分析ツールを使っても平均値の差の検定ができる。</p>
+<h4>作業</h4>
+<ol>
+  <li>上の関数と計算式を利用する方法で<s>平均値</s>分散の検定を行え。<br />
+  <a href="Ftest.png">指定方法</a></li>
+  <li>分析ツールの［等分散を仮定した2標本による検定］を使用して，平均値の検定を行え。<br />
+  <a href="ttest2.png">指定方法</a></li>
+</ol>
+<h3>計算例</h3>
+<p>ここまでの計算の<a href="ttest2result.xlsx">結果</a>である。</p>
+<h5>（注意）</h5>
+<blockquote>これらのシートを比較すれば分るように，結果は同じになるが，分析ツールは処理の中身が隠されているので分かりにくい。意味を理解するためには，出来るだけ関数を書くことを薦める。</blockquote>
+</body>
+</html>

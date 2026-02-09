@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.8.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Microsoft Excel 統計処理</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>回帰分析</h2>
+<h3>回帰分析とは</h3>
+<p><b>回帰分析</b>とは，線形回帰分析，つまり観測データに「もっとも近い」直線（回帰直線）を見付けて分析や予測を行う方法である。「もっとも近い」とは，観測値と予測値の差の２乗の和が最小になるするとする最小２乗法を用いて求める。（補足資料参照）</p>
+<p>以下，東京の気圧と前日の福岡の気圧データを使って，回帰分析を行うので，これをダウンロードして R フォルダに保存する。</p>
+<p><a href="../restricted/atmos.csv">データのダウンロード</a>　（ダウンロードは岡山大学内のみ）<br />
+出典：中村繁・北村幸房著「気象データマニュアル」理科年表読本，丸善，1987</p>
+<h3>Rによる分析</h3>
+<p>分析の手順は以下の通りである。</p>
+<ol>
+  <li>変数にデータファイルを読み込む</li>
+  <li>（必要なら）確認のため，読み込んだ内容を確認する</li>
+  <li>lm で線形回帰モデルの係数等を求め，変数に代入する</li>
+  <li>変数の値を出力する<br />
+  （必要なら）summary で詳細な結果を出力する</li>
+  <li>（グラフが必要な場合は）plot で散布図を描く</li>
+  <li>（グラフに回帰直線を表示する場合は）abline で先に描いたグラフに回帰直線を追加する</li>
+</ol>
+<h5>練習</h5>
+<p>上の操作手順に従って，先にダウンロードしたデータを分析する。</p>
+<ol>
+  <li>atmos &lt;- read.table('z:\\R\\atmos.csv', header=TRUE, sep=&quot;,&quot;)</li>
+  <li>print(atmos)</li>
+  <li>result &lt;- lm(atmos$東京の気圧 ~ atmos$前日の福岡の気圧)</li>
+  <li>print(result)　または　summary(result)</li>
+  <li>plot(atmos$東京の気圧 ~ atmos$前日の福岡の気圧)</li>
+  <li>abline(result)</li>
+</ol>
+<dl>
+  <dt>lm</dt>
+  <dd>線形回帰直線の係数を求める。線形の場合，従属変数と説明変数を ~ で結ぶ。</dd>
+  <dt>print</dt>
+  <dd>回帰直線の係数と切片のみを表示する。<br />
+  Intercept：切片<br />
+  説明変数：係数（傾き）</dd>
+  <dt>summary</dt>
+  <dd>print よりも詳細な結果を表示する。内容については以下に説明する。</dd>
+</dl>
+<h3>係数の検定</h3>
+<p>ほとんど相関が無いような分布であっても，回帰分析を行うと係数が計算されてしまう。しかし本当に相関があるのか，つまり回帰分析を行っても良いのかという判断が必要になる。</p>
+<p>相関があるか否かは，回帰直線を Y = β<sub>1</sub> + β<sub>2</sub>X としたときに，β<sub>2</sub> = 0 であるかを検定することになる。つまり以下のような仮説検定（t検定）を行う。</p>
+<p>帰無仮説：β<sub>2</sub> = 0<br />
+対立仮説：β<sub>2</sub> ≠ 0</p>
+<p>この検定における t値が t value ，そのt値での両側確率が Pr(&gt;|t|) である。<br />
+上で用いたデータの場合，両側確率が 2.03e-05（= 2.03×10<sup>-5</sup>）となり，有意水準を0.01としても0.05としても，いずれの場合も帰無仮説が棄却されることが分かる。つまりこれらの2つの値には相関があると言ってよい。</p>
+<p>正の相関があるか否かを検定するのであれば，上の対立仮説を</p>
+<p>対立仮説：β<sub>2</sub> &gt; 0</p>
+<p>とし，Pr(&gt;|t|) の値の2倍と有意水準を比較すればよい。</p>
+<p>その他，Multiple R-squared は相関係数の2乗を表し，この値が1に近いほど相関が強い，つまり回帰直線に近い位置に分布していることを意味する。</p>
+<h3>重回帰分析</h3>
+<p>上で行った回帰分析は，1変数から1変数を予測するもので，<b>単回帰分析</b>と呼ばれる。 これと同様の考えで，2つ以上の変数から1変数を予測することも可能である。 これを<b>重回帰分析</b>と呼ぶ。これは単回帰と同様の方法で求めることができる。</p>
+<h4>分析</h4>
+<p>以下は日本人学生の身長・体重と足のサイズのデータである。これをダウンロードして R フォルダに保存する。</p>
+<p><a href="../restricted/height_foot.csv">データのダウンロード</a>　（ダウンロードは岡山大学内のみ）<br />
+出典：河内まき子，持丸正明，岩澤洋，三谷誠二（2000）：<a href="http://www.dh.aist.go.jp/database/bodydimeDB/index.php.ja">日本人人体寸法データベース1997-98</a>，通商産業省工業技術院くらしとJISセンター より一部抜粋</p>
+<p>次に，以下のRスクリプトを実行する。</p>
+<ol>
+  <li>data &lt;- read.table('z:\\R\\height_foot.csv', header=TRUE, sep=&quot;,&quot;)</li>
+  <li>print(data)</li>
+  <li>x &lt;- data$身長</li>
+  <li>y &lt;- data$体重</li>
+  <li>z &lt;- data$足幅</li>
+  <li>result &lt;- lm(z ~ x + y)</li>
+  <li>summary(result)　# または　print(result)</li>
+</ol>
+<p>得られた結果は単回帰の場合と同様である。</p>
+<h4>3D散布図</h4>
+<p>標準ではできないが，パッケージ rgl を追加することで3次元の散布図を描くことができる。</p>
+<p>散布図を描くには，上の分析のスクリプトの後に以下のスクリプトを追加する。</p>
+<ol>
+  <li>library(rgl)</li>
+  <li>plot3d(x, y, z)</li>
+</ol>
+<p>ここで描かれた図は，マウスでドラッグすれば回転ができる。</p>
+<p>この図からも分かるように，例えば2変数から1変数を予測する場合，単回帰分析の回帰直線に相当するものは3次元空間の中の平面となる。上の分析で求めた係数はこの平面を決定するもので，値が大きいほどその変数の影響が大きいことを意味する。</p>
+</body>
+</html>
