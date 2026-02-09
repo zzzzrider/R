@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Rの基本操作</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>R の演算の基礎</h2>
+<p>ここでは，R Editor を使って，Rの基礎的な演算方法について学ぶ。</p>
+<h3>四則演算</h3>
+<p>R の四則演算やべき乗は，通常の式を書けばよい。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>26*7</li>
+  <li>4*9 - 7*2</li>
+  <li>7 / 3</li>
+  <li>2^5</li>
+  <li>2*pi*10</li>
+</ol>
+<dl>
+  <dt>4行　2^5</dt>
+  <dd>2の5乗</dd>
+  <dt>5行　pi</dt>
+  <dd>円周率</dd>
+</dl>
+<h3>数学関数</h3>
+<p>R では，様々な数学関数が使用できる。</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td>sqrt&#160;</td>
+      <td>平方根&#160;</td>
+    </tr>
+    <tr>
+      <td>exp</td>
+      <td>e<sup>x</sup></td>
+    </tr>
+    <tr>
+      <td>log</td>
+      <td>自然対数</td>
+    </tr>
+    <tr>
+      <td>log2</td>
+      <td>底が2の対数</td>
+    </tr>
+    <tr>
+      <td>log10</td>
+      <td>常用対数</td>
+    </tr>
+    <tr>
+      <td>sin</td>
+      <td>三角関数</td>
+    </tr>
+    <tr>
+      <td>cos</td>
+      <td>三角関数</td>
+    </tr>
+    <tr>
+      <td>tan</td>
+      <td>三角関数</td>
+    </tr>
+    <tr>
+      <td>asin</td>
+      <td>逆三角関数</td>
+    </tr>
+    <tr>
+      <td>acos&#160;</td>
+      <td>逆三角関数</td>
+    </tr>
+    <tr>
+      <td>atan&#160;</td>
+      <td>逆三角関数</td>
+    </tr>
+    <tr>
+      <td>sinh&#160;</td>
+      <td>双曲線関数</td>
+    </tr>
+    <tr>
+      <td>cosh&#160;</td>
+      <td>双曲線関数</td>
+    </tr>
+    <tr>
+      <td>tanh&#160;</td>
+      <td>双曲線関数</td>
+    </tr>
+    <tr>
+      <td>gamma</td>
+      <td>ガンマ関数</td>
+    </tr>
+    <tr>
+      <td>round</td>
+      <td>四捨五入</td>
+    </tr>
+    <tr>
+      <td>floor</td>
+      <td>小数点以下を切り捨て</td>
+    </tr>
+    <tr>
+      <td>ceiling</td>
+      <td>小数点以下を切り上げ</td>
+    </tr>
+    <tr>
+      <td>trunc</td>
+      <td>整数部分</td>
+    </tr>
+    <tr>
+      <td>sign</td>
+      <td>符号</td>
+    </tr>
+  </tbody>
+</table>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>sqrt(3)</li>
+  <li>log(5)</li>
+  <li>log10(100)</li>
+  <li>sin(pi/4)</li>
+  <li>asin(1/2)</li>
+</ol>
+<p>その他，様々な関数を使用して値を求めよ。</p>
+<h3>代入</h3>
+<p>代入は &lt;- （左辺の変数に右辺を代入）や -&gt; （右辺の変数に左辺を代入）を用いる。 数学で使用するのと同様に = で代入を行うこともできるが，推奨されていない。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>x &lt;- 5</li>
+  <li>y &lt;- 11</li>
+  <li>x</li>
+  <li>y</li>
+  <li>x - y</li>
+  <li>x*y</li>
+  <li>x/y</li>
+  <li>log(x)</li>
+  <li>z &lt;- log(x)</li>
+  <li>z</li>
+  <li>exp(z)</li>
+</ol>
+<dl>
+  <dt>3，4行</dt>
+  <dd>x，y の値を出力する。無くてもそれ以降の計算には影響しない。</dd>
+</dl>
+<h3>ベクトルと一括計算</h3>
+<p>R では複数のデータを並べたもの（データセット）をベクトルと呼ぶ。高校で学習したベクトルの概念と似ているが，データに文字データが含まれてもよいし，データの数はいくつでもかまわない。<br />
+ベクトルは c(　）の中にコンマで区切って値を書き定義する。数学関数や四則演算にベクトルを使用すると，各成分の計算になる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>x &lt;- c(1, 2, 3, 4)</li>
+  <li>x*4</li>
+  <li>x/4</li>
+  <li>4/x</li>
+  <li>x^2</li>
+  <li>3^x</li>
+  <li>y &lt;- 1/x</li>
+  <li>y</li>
+  <li>sin(y)</li>
+</ol>
+<dl>
+  <dt>2～6行</dt>
+  <dd>2行は，ベクトルの各成分を4倍する。3～6行も同様で，成分ごとに計算をし，その結果をベクトルとして返す。</dd>
+  <dt>7行　y &lt;- 1/x</dt>
+  <dd>計算結果を変数 y に代入する。当然 y もベクトルとして定義される。</dd>
+  <dt>9行　sin(y)</dt>
+  <dd>関数の引数（ひきすう，括弧の中の変数など）がベクトルの場合，ベクトルの各成分を関数の引数として計算したベクトル値が計算される。</dd>
+</dl>
+<h3>ベクトル同士の計算</h3>
+<p>加減乗除はベクトル同士の演算でも使用できる。これらは成分ごとの演算になる。<br />
+x の k 番目の成分は x[k] で，j 番目から k 番目までの成分は x[j:k] で得られる。<br />
+その他の処理も以下の通りである。</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>ベクトルの和</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>ベクトルの差</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>成分ごとの積<br />
+      スカラー倍</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>成分ごとの除算<br />
+      スカラー除算</td>
+    </tr>
+    <tr>
+      <td>%*%</td>
+      <td>内積</td>
+    </tr>
+    <tr>
+      <td>rev</td>
+      <td>成分の反転</td>
+    </tr>
+  </tbody>
+</table>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>x &lt;- c(2, 3, -4)</li>
+  <li>y &lt;- c(3, -1, -2)</li>
+  <li>x + y</li>
+  <li>x - y</li>
+  <li>x * y</li>
+  <li>x / y</li>
+  <li>x %*% y</li>
+  <li>rev(x)</li>
+  <li>x[2]</li>
+  <li>x[1:2]</li>
+</ol>
+<dl>
+  <dt>3，4行</dt>
+  <dd>通常のベクトルの演算。</dd>
+  <dt>5，6行</dt>
+  <dd>x，yの各成分同士の積，商を並べたベクトルを求める。</dd>
+  <dt>7行</dt>
+  <dd>xとyの内積を求める。</dd>
+  <dt>8行</dt>
+  <dd>xの成分を逆に並べたベクトルを求める。</dd>
+  <dt>9行</dt>
+  <dd>xの第2成分を取り出す。</dd>
+  <dt>10行</dt>
+  <dd>xの第1成分から第2成分までを並べたベクトルを取り出す。</dd>
+</dl>
+  <h3>数列</h3>
+<p>seq を使って数列を生成することができる。生成された数列は，ベクトルとして扱うこともできる。</p>
+<p>seq の書式の基本は</p>
+<p>seq(開始値，終了値，by=変化)</p>
+<p>である。3番目の引数を省略すると，±1 刻みで生成される。</p>
+<h5>練習</h5>
+<p>以下の式を，R Console で直接入力せよ。（頭の番号は不要）</p>
+<ol>
+  <li>seq(1, 10)</li>
+  <li>seq(1, 10, by=0.5)</li>
+  <li>seq(1, 3, len=21)</li>
+  <li>x &lt;- seq(1, 3, len=21)</li>
+  <li>rev(x)</li>
+</ol>
+<dl>
+  <dt>4行</dt>
+  <dd>開始値が1，終了値が3，項数が21の数列を作成する。</dd>
+</dl>
+  <h3>行列</h3>
+<h4>定義</h4>
+<p>行列は以下のように定義する。</p>
+<p>matrix(c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3)</p>
+<p>nrow が行数，ncol が列数，ベクトルが各成分となる。<br />
+ここで，連続した値を取るベクトルはコロンを使って，1:6 のように書ける。また nrow と ncol は省略してもよい。これより，上の式は</p>
+<p>matrix(1:6, 2, 3)</p>
+<p>と書いてもよい。</p>
+<p>方向を指定しない場合，先に列方向（下方向）に値が定められる。行方向（右方向）に順に定めたいときは，4番目の引数として byrow=TRUE を指定する。（下の練習の2行目と3行目を参照）</p>
+<p>matrix(1:12, 2, 3)</p>
+<p>のように値の個数が成分の個数より多い場合は，最初から必要な分だけが割り当てられる。また</p>
+<p>matrix(1:3, 2, 3)</p>
+<p>のように値の個数が成分の個数より少ない場合は，値が繰り返し割り当てられる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>matrix(c(1, 2, 3, 4, 5, 6), nrow=2, ncol=3)</li>
+  <li>matrix(1:6, 2, 3)</li>
+  <li>matrix(1:6, 2, 3, byrow=TRUE)</li>
+  <li>matrix(1:12, 2, 3)</li>
+  <li>matrix(1:3, 2, 3)</li>
+</ol>
+<h4>演算</h4>
+<p>行列の演算は以下のようになる。</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td>+</td>
+      <td>行列の和</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>行列の差</td>
+    </tr>
+    <tr>
+      <td>%*%</td>
+      <td>行列の積</td>
+    </tr>
+    <tr>
+      <td>solve</td>
+      <td>逆行列</td>
+    </tr>
+    <tr>
+      <td>eigen</td>
+      <td>行列の固有値と固有ベクトル</td>
+    </tr>
+  </tbody>
+</table>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>A &lt;- matrix(1:4, 2, 2)</li>
+  <li>B &lt;- matrix(c(1, 2, -3, 4), 2, 2)</li>
+  <li>A; B</li>
+  <li>A + B</li>
+  <li>A - B</li>
+  <li>A %*% B</li>
+  <li>B %*% A</li>
+  <li>solve(A)</li>
+  <li>A %*% solve(A)</li>
+</ol>
+<dl>
+  <dt>3行　セミコロン</dt>
+  <dd>1行に複数の関数などを書く場合は，セミコロンで区切る。見難くなる恐れがあるときは，使用しないほうがよい。</dd>
+  <dt>6，7行</dt>
+  <dd>ベクトルの単元で内積を求めるのに %*% を使ったが，これは行列の積を計算する演算子で，その特別な場合が内積の計算になる。</dd>
+  <dt>8行</dt>
+  <dd>solve は逆行列を求める関数で，9行目はその確認をするための計算である。</dd>
+</dl>
+<h3>微分</h3>
+<p>R では関数の微分を計算できる。</p>
+<h4>Dで微分</h4>
+<p>関数 expression を用いて式を定義し，D で微分する。D を用いた場合，微分した式を求めることはできるが，その式の値を求めることはできない。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>f &lt;- expression(x^3)</li>
+  <li>D(f,&quot;x&quot;)</li>
+  <li>g &lt;- expression(sin(x^2))</li>
+  <li>D(g,&quot;x&quot;)</li>
+  <li>h &lt;- expression(sqrt(x)*sin(x))</li>
+  <li>D(h,&quot;x&quot;)</li>
+</ol>
+<dl>
+  <dt>1行</dt>
+  <dd>関数として f を定める。</dd>
+  <dt>2行</dt>
+  <dd>関数 f を x で微分する。</dd>
+</dl>
+<p>これら2つの行をまとめて，D(expression(x^3), &quot;x&quot;) としても構わない。</p>
+<h4>derivで微分</h4>
+<p>上の方法で微分した場合，微分した式を求めることはできるが，その式の値を求めたりすることはできない。関数 deriv を使用すれば値を求めることができる。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>f &lt;- deriv(~x^3, &quot;x&quot;, func=TRUE)</li>
+  <li>f(2)</li>
+  <li>g &lt;- deriv(~sin(x^2), &quot;x&quot;, func=TRUE)</li>
+  <li>g(2)</li>
+  <li>h &lt;- deriv(~sqrt(x)*sin(x), &quot;x&quot;, func=TRUE)</li>
+  <li>h(pi/2)</li>
+</ol>
+<dl>
+  <dt>1行</dt>
+  <dd>微分した関数を f としている。</dd>
+  <dt>2行</dt>
+  <dd>x = 2 での元の関数と微分した関数の値を求める。</dd>
+</dl>
+<h3>積分</h3>
+<p>Rでの積分は，数値積分（定積分で，積分区間が数値になっているもの）のみ可能である。<br />
+function で関数を定義し，integrate で数値積分をする。</p>
+<h5>練習</h5>
+<p>以下の式を，R Editor で入力し実行，保存せよ。（行番号は入力不要）</p>
+<ol>
+  <li>f &lt;- function(x) x^2</li>
+  <li>integrate(f, 0, 1)</li>
+  <li>g &lt;- function(x) log(x)</li>
+  <li>integrate(g, 1, exp(1))</li>
+  <li>h &lt;- function(x) 1/x</li>
+  <li>integrate(h, 0, 1)</li>
+  <li>integrate(sin, 0, pi/2)</li>
+</ol>
+<dl>
+  <dt>1行</dt>
+  <dd>関数 x2 を f として定義する。</dd>
+  <dt>2行</dt>
+  <dd>f を積分区間 0 から 1 の間で積分する。この結果<br />
+  0.3333333 with absolute error &lt; 3.7e-15<br />
+  と出力されるが，この最後の部分は，誤差の範囲が 3.7×10<sup>-15</sup> 以下であることを言っている。</dd>
+  <dt>6行</dt>
+  <dd>積分値が発散するのでエラー表示となる。</dd>
+  <dt>7行</dt>
+  <dd>既存の関数の積分は，関数名をそのまま使用する。</dd>
+</dl>
+<h5>補足</h5>
+<p>R では積分した関数を求めるのはできないが，Maxima のような数式処理ソフトを使えば関数を求めることができる。</p>
+</body>
+</html>

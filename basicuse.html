@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 16.0.10.0 for Windows" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>Rの基本操作</title>
+<link rel="stylesheet" href="../standard.css" type="text/css" />
+</head>
+<body>
+<h1>R入門</h1>
+<h2>R の基本操作</h2>
+<h3>Rの操作ウィンドウ</h3>
+<p>R の操作方法画面は2種類ある。</p>
+<p><img src="Rwindow.png" width="492" height="410" border="0" /></p>
+<h5>R Consle</h5>
+<p>R起動時に RGui に表示されるウィンドウ。通常はここにコマンドを入力する。</p>
+<h5>Rエディタ（R Editor）</h5>
+<p>プログラミングなどの長い処理，複雑な処理を行う場合に使用する。</p>
+<h3>RStudio の操作ウィンドウ</h3>
+<p>RStudioの操作画面は以下のようになっている。<br />
+この中の Console は R の R Console と同じ機能を果たすので，以下の作業は RStudio の Console で行ってもかまわない。</p>
+<p><img src="RStudio.png" width="600" height="424" border="0" /></p>
+<h3>R Consle の操作</h3>
+<p>上に書いたように，RStudio の Console で作業を行ってもかまわない。</p>
+<h4>コマンド入力</h4>
+<p>R Console の &gt; （プロンプト）の後ろにコマンドを入力し，Enter キーを押す。入力したコマンドは，1行ずつ実行される。<br />
+入力済みのコマンドは、上下のカーソルキーで再表示させることができる。（履歴）</p>
+<h5>練習</h5>
+<p>以下の式を，R Console で直接入力せよ。（頭の番号は不要）<br />
+ここで &lt;- は右の値を左の変数に代入することを意味する。<br />
+次に，上向きのカーソルキーで履歴をたどることができることを確認せよ。</p>
+<ol>
+  <li>26 * 7</li>
+  <li>4*9 - 7*2</li>
+  <li>7 / 3</li>
+  <li>2^5</li>
+  <li>2*pi*10</li>
+  <li>x &lt;- 7</li>
+  <li>x</li>
+  <li>y &lt;- 3</li>
+  <li>x; y<br />
+  （セミコロンで区切ると，1行に2つ以上のコマンドを書くことができる。）</li>
+  <li>x / y</li>
+</ol>
+<h4>作業スペースの保存</h4>
+<p>作業スペースの保存を実行すると，R Console で設定した変数などの情報が保存される。しかし入力した内容が保存されるわけではないので，注意すること。</p>
+<h5>練習</h5>
+<ol>
+  <li>上の練習を行った後作業スペースを保存せよ。</li>
+  <li>Rを再起動した後 Console で x と入力し，値が定義されていないことを確認せよ。</li>
+  <li>［作業スペースの読み込み...］で，先に保存した作業スペースを読み込め。</li>
+  <li>Console で x や y を入力し，代入された値が表示されるのを確認せよ。</li>
+</ol>
+<h3>R Editor の操作</h3>
+<p>R Editor はプログラミングや複雑な処理を書くときに使用する。</p>
+<h4>作成</h4>
+<p>R Editor を開くには，［ファイル］メニューから［新しいスクリプト］を選ぶ。RStudio では最初から表示されている左上のペインがこれに該当するので，新規に開く必要はない。<br />
+ここにコマンドやプログラムを入力する。入力は複数行になってもよく，まとめて実行することができる。</p>
+<h4>実行</h4>
+<p>入力したコマンドの実行方法は，R と RStudio で異なる。</p>
+<h5>R の場合</h5>
+<p>カーソル行の1行だけか選択行を実行する場合，実行したい行にカーソルを移動するか実行したい行を選択し，Ctrl ＋ R　を押すか，［編集］メニューから［カーソル行または選択中のRコードを実行］を選ぶ。</p>
+<p>すべての行を実行する場合，すべてを選択してから Ctrl ＋ R　を押すか，［編集］メニューから［全て実行］を選ぶ。</p>
+<h5>RStudio の場合</h5>
+<p>カーソル行の1行だけか選択行を実行する場合，実行したい行にカーソルを移動するか実行したい行を選択し，Ctrl ＋ Enter　を押すか，［Code］メニューから［Run Selected Line(s)］を選ぶ。</p>
+<p>すべての行を実行する場合，Alt + Ctrl + R を押すか，［Code］メニューから［Run Region］，［Run All］を選ぶ。</p>
+<h4>保存</h4>
+<p>作成したコマンドは，［ファイル］メニューから［保存］を選ぶことで R ファイルとして保存できる。なお，古いバージョンでは拡張子［.R］が自動的に付かないので，忘れずに付けること。</p>
+<h5>練習</h5>
+<p>１．以下の式を，R Editor に入力せよ。</p>
+<p>x &lt;- 3.53<br />
+y &lt;- 8.91<br />
+x - y<br />
+x + y<br />
+x * y<br />
+x / y<br />
+x^2 + y^2</p>
+<p>２．これをすべて実行せよ。</p>
+<p>３．上で作成したものを，test.R として適当な場所に保存せよ。</p>
+</body>
+</html>
